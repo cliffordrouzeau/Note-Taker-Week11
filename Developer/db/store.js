@@ -2,7 +2,7 @@ const util = require('util');
 const fs = require('fs');
 const readFile = util.promisify(fs.readFile);
 const writeFile = util.promisify(fs.writeFile);
-const uuidv1 = require('uuid/v1');
+// const uuidv7 = require('uuidv7');
 
 
 class Store {
@@ -32,8 +32,9 @@ class Store {
 
         const title = note.title
         const text = note.text
+        const id = Math.floor(Math.random() * 100000)
     
-        const nNote = { title, text, id: uuidv1() };
+        const nNote = { title, text, id };
     
         return this.getNotes()
           .then((notes) => [...notes, nNote])
